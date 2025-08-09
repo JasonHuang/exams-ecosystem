@@ -1,0 +1,24 @@
+{
+  "name": "@exams/miniprogram",
+  "version": "1.0.0",
+  "description": "小学数学练习生成器 - 微信小程序",
+  "scripts": {
+    "dev": "npm run compile",
+    "build": "npm run compile",
+    "compile": "tsc",
+    "watch": "tsc --watch",
+    "clean": "rm -rf miniprogram/dist",
+    "type-check": "tsc --noEmit",
+    "upload": "miniprogram-ci upload",
+    "preview": "miniprogram-ci preview"
+  },
+  "dependencies": {
+    "@exams/shared": "file:../shared",
+    "miniprogram-api-typings": "^3.12.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "miniprogram-ci": "^1.8.0",
+    "@types/wechat-miniprogram": "^3.4.0"
+  }
+}
