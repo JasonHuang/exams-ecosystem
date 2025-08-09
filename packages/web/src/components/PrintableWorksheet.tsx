@@ -320,7 +320,15 @@ export default function PrintableWorksheet() {
 
                 {/* 页脚 */}
                 <div className="print-footer">
-                  <span>第 {page.pageNumber} 页</span>
+                  <div className="footer-left">
+                    <span>小学数学练习题</span>
+                  </div>
+                  <div className="footer-center">
+                    <span>第 {page.pageNumber} 页 / 共 {pages.length} 页</span>
+                  </div>
+                  <div className="footer-right">
+                    <span>得分：_____</span>
+                  </div>
                 </div>
               </div>
             ))}
@@ -353,6 +361,9 @@ export default function PrintableWorksheet() {
           background: white;
           box-shadow: 0 0 10px rgba(0,0,0,0.1);
           page-break-after: always;
+          position: relative;
+          display: flex;
+          flex-direction: column;
         }
 
         .print-page:last-child {
@@ -380,9 +391,10 @@ export default function PrintableWorksheet() {
 
         .print-problems {
           display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+          grid-template-columns: repeat(4, 1fr);
           gap: 15px;
-          margin-bottom: 40px;
+          flex: 1;
+          margin-bottom: 20px;
         }
 
         .print-problem {
@@ -392,9 +404,6 @@ export default function PrintableWorksheet() {
           font-size: 16px;
           line-height: 1.5;
           padding: 8px;
-          border: 1px solid #ddd;
-          border-radius: 4px;
-          background-color: #fafafa;
         }
 
         .problem-text {
@@ -404,12 +413,31 @@ export default function PrintableWorksheet() {
         }
 
         .print-footer {
-          position: absolute;
-          bottom: 20mm;
-          left: 50%;
-          transform: translateX(-50%);
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
           font-size: 12px;
           color: #666;
+          border-top: 1px solid #ddd;
+          padding-top: 10px;
+          margin-top: auto;
+        }
+
+        .footer-left, .footer-center, .footer-right {
+          flex: 1;
+        }
+
+        .footer-left {
+          text-align: left;
+        }
+
+        .footer-center {
+          text-align: center;
+          font-weight: bold;
+        }
+
+        .footer-right {
+          text-align: right;
         }
 
         @media print {
@@ -422,6 +450,11 @@ export default function PrintableWorksheet() {
           .print-footer {
             position: fixed;
             bottom: 10mm;
+            left: 20mm;
+            right: 20mm;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
           }
         }
       `}</style>
